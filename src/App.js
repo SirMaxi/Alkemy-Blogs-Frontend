@@ -1,7 +1,9 @@
+import React from 'react';
+
 function App() {
   return (
     <div>
-      Hola
+      <h1 className="text-center title-home">Myy Incomes/Outcomes</h1>
     </div>
   );
 }
