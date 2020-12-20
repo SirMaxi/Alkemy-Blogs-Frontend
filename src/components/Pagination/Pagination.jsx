@@ -9,7 +9,7 @@ function Pagination({ postsPerPage, totalPosts, paginate }) {
 
   return (
     <nav>
-      <ul className="pagination">
+      <ul className="pagination pagination-lg justify-content-center">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
             <a
