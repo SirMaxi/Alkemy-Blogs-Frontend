@@ -1,10 +1,25 @@
 import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Header from './components/Header/header';
+import Home from './pages/Home/home';
+import Details from './pages/Detail/detail';
+import Create from './pages/Create/create';
+import Update from './pages/Update/update';
+import Post from './pages/Post/post';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div>
-      <h1 className="text-center title-home">Myy Incomes/Outcomes</h1>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/post" component={Post} />
+        <Route exact path="/details" component={Details} />
+        <Route exact path="/create" component={Create} />
+        <Route exact path="/update" component={Update} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
