@@ -21,6 +21,11 @@
     "rules": {
         "no-console": "off",
         "prettier/prettier": ["error"],
-        "consistent-return": "off"
+        "consistent-return": "off",
+        "react/jsx-indent": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "implicit-arrow-linebreak": "off",
+        "react/button-has-type": "off",
+        "jsx-a11y/label-has-associated-control": "off"
     }
 }
