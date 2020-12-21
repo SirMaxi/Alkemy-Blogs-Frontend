@@ -40,7 +40,7 @@ function update(props) {
       console.log(error);
     }
 
-    alert('New operation updated');
+    alert('Post updated');
     history.push('/');
   };
 

@@ -38,7 +38,7 @@ function create() {
       console.log(error);
     }
 
-    alert('New operation added');
+    alert('New post added');
     window.location.reload();
   };
   return (
