@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
 
 function update(props) {
   const history = useHistory();
@@ -17,15 +18,17 @@ function update(props) {
     let changedData = post;
     changedData = { ...changedData, [name]: value };
     setNewData(changedData);
-
-    console.log(changedData);
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
     if (!newData.title || !newData.body) {
-      alert('All fields are required');
+      swal({
+        title: 'All fields are required!',
+        icon: 'warning',
+      });
+      return;
     }
     const sendData = newData;
     try {
@@ -40,8 +43,15 @@ function update(props) {
       console.log(error);
     }
 
-    alert('Post updated');
-    history.push('/');
+    swal({
+      title: 'Post updated!',
+      icon: 'success',
+    }).then((e) => {
+      if (e) {
+        history.push('/');
+      }
+      history.push('/');
+    });
   };
 
   return (
