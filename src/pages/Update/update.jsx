@@ -47,9 +47,6 @@ function update(props) {
       title: 'Post updated!',
       icon: 'success',
     }).then((e) => {
-      if (e) {
-        history.push('/');
-      }
       history.push('/');
     });
   };
