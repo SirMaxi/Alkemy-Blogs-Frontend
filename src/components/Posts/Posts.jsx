@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
 
 function posts({ postsData }) {
   const history = useHistory();
@@ -45,8 +46,15 @@ function posts({ postsData }) {
     } catch (error) {
       console.log(error);
     }
-    alert('Operation deleted successfully');
-    window.location.reload();
+    swal({
+      title: 'Your post has been deleted!',
+      icon: 'success',
+    }).then((e) => {
+      if (e) {
+        location.reload();
+      }
+      location.reload();
+    });
   };
 
   const renderPosts = () =>
