@@ -14,7 +14,7 @@ function Pagination({ postsPerPage, totalPosts, paginate }) {
           <li key={number} className="page-item">
             <a
               onClick={() => paginate(number)}
-              href="!#"
+              href="#!"
               className="page-link"
             >
               {number}
