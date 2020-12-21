@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import swal from 'sweetalert';
+import { useHistory } from 'react-router-dom';
 import './create.css';
 
 function create() {
@@ -7,6 +8,7 @@ function create() {
     title: '',
     body: '',
   });
+  const history = useHistory();
 
   const onChange = (e) => {
     console.log(e);
@@ -45,8 +47,9 @@ function create() {
     swal({
       title: 'New post added!',
       icon: 'success',
+    }).then((e) => {
+      history.push('/');
     });
-    window.location.reload();
   };
   return (
     <div className="custom-container">
