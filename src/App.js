@@ -13,11 +13,11 @@ function App() {
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route path="/" component={Home} />
         <Route exact path="/post" component={Post} />
         <Route exact path="/details" component={Details} />
         <Route exact path="/create" component={Create} />
         <Route exact path="/update" component={Update} />
+        <Route path="/" component={Home} />
       </Switch>
     </BrowserRouter>
   );
