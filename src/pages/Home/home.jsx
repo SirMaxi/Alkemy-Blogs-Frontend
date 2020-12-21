@@ -9,7 +9,7 @@ function home() {
 
   const list = async () => {
     try {
-      await fetch('https://jsonplaceholder.typicode.com/posts')
+      await fetch(`${process.env.REACT_APP_BASE_URL}/posts`)
         .then((response) => response.json())
         .then((data) => {
           setPosts(data);

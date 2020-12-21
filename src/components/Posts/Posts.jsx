@@ -5,9 +5,7 @@ function posts({ postsData }) {
   const history = useHistory();
   const onPost = async (id) => {
     try {
-      await fetch(
-        `https://jsonplaceholder.typicode.com/posts?id=${id}`,
-      )
+      await fetch(`${process.env.REACT_APP_BASE_URL}/posts?id=${id}`)
         .then((response) => response.json())
         .then((data) => {
           history.push({
@@ -22,22 +20,30 @@ function posts({ postsData }) {
     }
   };
 
-  const onModify = (e) => {
-    history.push({
-      pathname: '/update',
-      state: {
-        data: e,
-      },
-    });
+  const onModify = async (id) => {
+    try {
+      await fetch(`${process.env.REACT_APP_BASE_URL}/posts?id=${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          history.push({
+            pathname: '/update',
+            state: {
+              data,
+            },
+          });
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const onDelete = async (id) => {
     try {
       await fetch(
-        `https://jsonplaceholder.typicode.com/delete?id=${id}`,
+        `${process.env.REACT_APP_BASE_URL}/delete?id=${id}`,
       );
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
     alert('Operation deleted successfully');
     window.location.reload();
@@ -60,7 +66,7 @@ function posts({ postsData }) {
           <td>
             <button
               className="btn btn-outline-warning"
-              onClick={() => onModify(e)}
+              onClick={() => onModify(e.id)}
             >
               Modify
             </button>

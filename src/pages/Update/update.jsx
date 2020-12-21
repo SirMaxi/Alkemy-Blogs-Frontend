@@ -4,16 +4,17 @@ import { useHistory } from 'react-router-dom';
 function update(props) {
   const history = useHistory();
   const { data } = props.location.state;
+  const post = data[0];
 
   const [newData, setNewData] = useState({
-    title: data.title,
-    body: data.body,
+    title: post.title,
+    body: post.body,
   });
 
   const onChange = (e) => {
     const name = e.target.id;
     const { value } = e.target;
-    let changedData = data;
+    let changedData = post;
     changedData = { ...changedData, [name]: value };
     setNewData(changedData);
 
