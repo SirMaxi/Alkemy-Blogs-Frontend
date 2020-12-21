@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import swal from 'sweetalert';
 import './create.css';
 
 function create() {
@@ -22,7 +23,10 @@ function create() {
     e.preventDefault();
 
     if (!data.title || !data.body) {
-      alert('All fields are required');
+      swal({
+        title: 'All fields are required!',
+        icon: 'warning',
+      });
       return;
     }
     const sendData = data;
@@ -38,7 +42,10 @@ function create() {
       console.log(error);
     }
 
-    alert('New post added');
+    swal({
+      title: 'New post added!',
+      icon: 'success',
+    });
     window.location.reload();
   };
   return (
