@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 function update(props) {
   const history = useHistory();
   const data = props.location.state.data;
+  console.log('test');
 
   const [newData, setNewData] = useState({
     title: data.title,
