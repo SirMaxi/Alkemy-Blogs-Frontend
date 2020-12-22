@@ -9,7 +9,7 @@ function home() {
 
   const list = async () => {
     try {
-      await fetch(`${process.env.REACT_APP_BASE_URL}/posts`)
+      await fetch(`${process.env.REACT_APP_BASE_URL}`)
         .then((response) => response.json())
         .then((data) => {
           setPosts(data);
@@ -47,14 +47,18 @@ function home() {
             <table className="table">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">ID</th>
                   <th scope="col">Title</th>
                   <th scope="col"> </th>
                   <th scope="col"> </th>
                   <th scope="col"> </th>
                 </tr>
               </thead>
-              <Posts postsData={currentPosts} />
+              <Posts
+                postsData={currentPosts}
+                posts={posts}
+                setPosts={setPosts}
+              />
             </table>
             <Pagination
               postsPerPage={postsPerPage}
