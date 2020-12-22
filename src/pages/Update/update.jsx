@@ -4,22 +4,20 @@ import swal from 'sweetalert';
 
 function update(props) {
   const history = useHistory();
-  const { data } = props.location.state;
-  const post = data[0];
+  const data = props.location.state.data;
 
   const [newData, setNewData] = useState({
-    title: post.title,
-    body: post.body,
+    title: data.title,
+    body: data.body,
   });
 
   const onChange = (e) => {
     const name = e.target.id;
     const { value } = e.target;
-    let changedData = post;
+    let changedData = data;
     changedData = { ...changedData, [name]: value };
     setNewData(changedData);
   };
-
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -32,7 +30,7 @@ function update(props) {
     }
     const sendData = newData;
     try {
-      await fetch(`${process.env.REACT_APP_BASE_URL}/update`, {
+      await fetch(`${process.env.REACT_APP_BASE_URL}/${data.id}`, {
         method: 'PUT',
         body: JSON.stringify(sendData),
         headers: {
