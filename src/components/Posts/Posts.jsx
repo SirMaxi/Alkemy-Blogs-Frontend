@@ -4,9 +4,12 @@ import swal from 'sweetalert';
 
 function posts({ postsData }) {
   const history = useHistory();
+
   const onPost = async (id) => {
     try {
-      await fetch(`${process.env.REACT_APP_BASE_URL}/posts?id=${id}`)
+      await fetch(`${process.env.REACT_APP_BASE_URL}/${id}`, {
+        method: 'GET',
+      })
         .then((response) => response.json())
         .then((data) => {
           history.push({
@@ -23,7 +26,9 @@ function posts({ postsData }) {
 
   const onModify = async (id) => {
     try {
-      await fetch(`${process.env.REACT_APP_BASE_URL}/posts?id=${id}`)
+      await fetch(`${process.env.REACT_APP_BASE_URL}/${id}`, {
+        method: 'GET',
+      })
         .then((response) => response.json())
         .then((data) => {
           history.push({
@@ -40,9 +45,9 @@ function posts({ postsData }) {
 
   const onDelete = async (id) => {
     try {
-      await fetch(
-        `${process.env.REACT_APP_BASE_URL}/delete?id=${id}`,
-      );
+      await fetch(`${process.env.REACT_APP_BASE_URL}/${id}`, {
+        method: 'DELETE',
+      });
     } catch (error) {
       console.log(error);
     }
@@ -50,9 +55,6 @@ function posts({ postsData }) {
       title: 'Your post has been deleted!',
       icon: 'success',
     }).then((e) => {
-      if (e) {
-        location.reload();
-      }
       location.reload();
     });
   };
